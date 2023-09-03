@@ -1,0 +1,105 @@
+.general-info-container,
+.educational-experience-container,
+.practical-experience-container {
+  position: relative;
+  background-color: #3500d3;
+  color: white;
+  border-radius: 10px;
+  padding-bottom: 1rem;
+}
+
+.cv-creator-name {
+  color: white;
+  font-size: 35px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+}
+
+.buttons-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateY(calc(-4px - 100%));
+  display: flex;
+  gap: 15px;
+}
+
+.buttons-container button {
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  border-radius: 15px;
+  font-size: 25px;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.buttons-container button:hover {
+  background-color: #3500d3;
+}
+
+.cv-creator-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+  background-color: #190061;
+  width: 30%;
+  margin: 2rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  border-radius: 10px;
+  min-height: 700px;
+  box-shadow: 5px 5px 6px rgba(255, 255, 255, 0.101);
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  margin: 1rem 0;
+}
+
+div label {
+  font-size: 25px;
+  margin-left: 1rem;
+  width: fit-content;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.402);
+}
+
+input {
+  max-width: 400px;
+  border-radius: 10px;
+  margin: 0 auto;
+  font-size: 25px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus {
+  box-shadow: 5px 5px 15px #190061;
+}
+
+form,
+.company-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 50%);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.arrow:hover {
+  transform: scale(1.1) translate(-50%, 50%);
+}
