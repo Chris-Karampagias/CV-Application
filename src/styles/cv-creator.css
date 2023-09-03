@@ -2,8 +2,9 @@
 .educational-experience-container,
 .practical-experience-container {
   position: relative;
-  background-color: #3500d3;
-  color: white;
+  background-color: white;
+  border: 2px solid black;
+  color: rgb(0, 0, 0);
   border-radius: 10px;
   padding-bottom: 1rem;
 }
@@ -18,27 +19,26 @@
 }
 
 .buttons-container {
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: translateY(calc(-4px - 100%));
   display: flex;
   gap: 15px;
+  align-self: flex-end;
 }
 
 .buttons-container button {
-  border: 1px solid white;
-  color: white;
+  border: none;
+  color: black;
   padding: 5px;
   border-radius: 15px;
   font-size: 25px;
-  background-color: transparent;
+  background-color: rgba(189, 189, 189, 0.49);
+  border: none;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .buttons-container button:hover {
   background-color: #3500d3;
+  color: white;
 }
 
 .cv-creator-container {
@@ -47,14 +47,13 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 50px;
-  background-color: #190061;
+  background-color: #ffffff;
   width: 30%;
   margin: 2rem;
   margin-top: 3rem;
   padding: 2rem;
   border-radius: 10px;
   min-height: 700px;
-  box-shadow: 5px 5px 6px rgba(255, 255, 255, 0.101);
 }
 
 .title {
@@ -64,16 +63,18 @@
 }
 
 div label {
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 1rem;
   width: fit-content;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.402);
+  font-weight: bolder;
 }
 
 input {
   max-width: 400px;
   border-radius: 10px;
-  margin: 0 auto;
+  border: none;
+  margin-left: 1rem;
+  background-color: rgba(189, 189, 189, 0.205);
   font-size: 25px;
   outline: none;
   cursor: pointer;
@@ -81,7 +82,8 @@ input {
 }
 
 input:focus {
-  box-shadow: 5px 5px 15px #190061;
+  border: 1px solid #3500d3;
+  background-color: white;
 }
 
 form,
@@ -98,8 +100,40 @@ form,
   transform: translate(-50%, 50%);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  color: #3500d3;
 }
 
 .arrow:hover {
   transform: scale(1.1) translate(-50%, 50%);
+}
+
+.job-duration-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+}
+
+.date-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+textarea {
+  resize: none;
+  margin-left: 1rem;
+  max-width: 400px;
+  border-radius: 10px;
+  font-size: 20px;
+  border: none;
+  background-color: rgba(189, 189, 189, 0.205);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+textarea:focus {
+  border: 1px solid #3500d3;
+  background-color: white;
 }

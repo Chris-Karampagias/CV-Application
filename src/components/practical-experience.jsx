@@ -5,7 +5,7 @@ import { mdiArrowCollapseDown } from "@mdi/js";
 export default function PracticalExperience() {
   return (
     <div className="practical-experience-container">
-      <h1 className="title">Practical experience</h1>
+      <h1 className="title">Experience</h1>
       <Icon className="arrow" path={mdiArrowCollapseDown} size={1} />
       <form action="">
         <div className="company-container">
@@ -13,12 +13,18 @@ export default function PracticalExperience() {
           <input type="text" id="company-name" />
           <label htmlFor="position-title">Position title </label>
           <input type="text" id="position-title" />
-          <label htmlFor="main-responsibilities">Main responsibilities </label>
-          <input type="text" id="main-responsibilities" />
-          <label htmlFor="from">From </label>
-          <input type="date" id="from" />
-          <label htmlFor="to">To </label>
-          <input type="date" id="to" />
+          <div className="job-duration-container">
+            <div className="date-container">
+              <label htmlFor="from">Start Date </label>
+              <input type="text" id="from" />
+            </div>
+            <div className="date-container">
+              <label htmlFor="to">End Date </label>
+              <input type="text" id="to" />
+            </div>
+          </div>
+          <label htmlFor="main-responsibilities">Description </label>
+          <textarea id="main-responsibilities" rows="5" cols="2" />
         </div>
       </form>
     </div>

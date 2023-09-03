@@ -5,7 +5,7 @@ import { mdiArrowCollapseDown } from "@mdi/js";
 export default function EducationalExperience() {
   return (
     <div className="educational-experience-container">
-      <h1 className="title">Educational experience</h1>
+      <h1 className="title">Education</h1>
       <Icon className="arrow" path={mdiArrowCollapseDown} size={1} />
       <form action="">
         <label htmlFor="school-name">School Name </label>
