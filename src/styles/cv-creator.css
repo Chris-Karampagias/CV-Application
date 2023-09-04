@@ -41,6 +41,14 @@
   color: white;
 }
 
+.cv-container {
+  display: flex;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
 .cv-creator-container {
   position: relative;
   display: flex;
@@ -48,12 +56,12 @@
   justify-content: space-between;
   gap: 50px;
   background-color: #ffffff;
-  width: 30%;
+  width: 35%;
   margin: 2rem;
   margin-top: 3rem;
   padding: 2rem;
   border-radius: 10px;
-  min-height: 700px;
+  height: fit-content;
 }
 
 .title {
