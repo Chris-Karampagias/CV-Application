@@ -1,30 +1,17 @@
+/* eslint-disable react/prop-types */
 import "../styles/cv-creator.css";
 import Icon from "@mdi/react";
 import { mdiArrowCollapseDown, mdiArrowCollapseUp } from "@mdi/js";
 import { useState } from "react";
 
-export default function EducationalExperience() {
+export default function EducationalExperience({
+  info,
+  handleSchool,
+  handleStudy,
+  handleFrom,
+  handleTo,
+}) {
   const [state, setState] = useState("closed");
-  const [school, setSchool] = useState("");
-  const [study, setStudy] = useState("");
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
-
-  function changeSchool(e) {
-    setSchool(e.target.value);
-  }
-
-  function changeStudy(e) {
-    setStudy(e.target.value);
-  }
-
-  function changeFrom(e) {
-    setFrom(e.target.value);
-  }
-
-  function changeTo(e) {
-    setTo(e.target.value);
-  }
 
   function open() {
     setState("open");
@@ -51,15 +38,15 @@ export default function EducationalExperience() {
             <input
               type="text"
               id="school-name"
-              value={school}
-              onInput={changeSchool}
+              value={info.school}
+              onInput={handleSchool}
             />
             <label htmlFor="title-of-study">Title of study </label>
             <input
               type="text"
               id="title-of-study"
-              value={study}
-              onInput={changeStudy}
+              value={info.study}
+              onInput={handleStudy}
             />
             <div className="study-duration-container">
               <div className="date-container">
@@ -67,8 +54,8 @@ export default function EducationalExperience() {
                 <input
                   type="text"
                   id="from"
-                  value={from}
-                  onInput={changeFrom}
+                  value={info.start}
+                  onInput={handleFrom}
                   placeholder="e.g. 10/7/2016"
                 />
               </div>
@@ -77,8 +64,8 @@ export default function EducationalExperience() {
                 <input
                   type="text"
                   id="to"
-                  value={to}
-                  onInput={changeTo}
+                  value={info.end}
+                  onInput={handleTo}
                   placeholder="e.g. 20/8/2020 / Present"
                 />
               </div>

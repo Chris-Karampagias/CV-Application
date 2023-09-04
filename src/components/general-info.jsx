@@ -1,31 +1,17 @@
+/* eslint-disable react/prop-types */
 import "../styles/cv-creator.css";
 import Icon from "@mdi/react";
 import { mdiArrowCollapseDown, mdiArrowCollapseUp } from "@mdi/js";
 import { useState } from "react";
 
-export default function GeneralInfo() {
+export default function GeneralInfo({
+  info,
+  handleName,
+  handleEmail,
+  handlePhone,
+  handleLocation,
+}) {
   const [state, setState] = useState("open");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [location, setLocation] = useState("");
-
-  function changeName(e) {
-    setName(e.target.value);
-  }
-
-  function changeEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function changePhone(e) {
-    setPhone(e.target.value);
-  }
-
-  function changeLocation(e) {
-    setLocation(e.target.value);
-  }
-
   function open() {
     setState("open");
   }
@@ -49,23 +35,33 @@ export default function GeneralInfo() {
           />
           <form action="">
             <label htmlFor="name">Full name </label>
-            <input type="text" id="name" value={name} onInput={changeName} />
+            <input
+              type="text"
+              id="name"
+              value={info.name}
+              onInput={handleName}
+            />
             <label htmlFor="email">Email </label>
             <input
               type="email"
               id="email"
-              value={email}
-              onInput={changeEmail}
+              value={info.email}
+              onInput={handleEmail}
               placeholder="e.g. johndoe@cv.com"
             />
             <label htmlFor="phone">Phone Number </label>
-            <input type="tel" id="phone" value={phone} onInput={changePhone} />
+            <input
+              type="tel"
+              id="phone"
+              value={info.phone}
+              onInput={handlePhone}
+            />
             <label htmlFor="location">Location </label>
             <input
               type="text"
               id="location"
-              value={location}
-              onInput={changeLocation}
+              value={info.location}
+              onInput={handleLocation}
               placeholder="e.g. London,UK"
             />
           </form>

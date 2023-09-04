@@ -1,31 +1,20 @@
+/* eslint-disable react/prop-types */
 import "../styles/cv-creator.css";
 import Icon from "@mdi/react";
 import { mdiArrowCollapseDown, mdiArrowCollapseUp } from "@mdi/js";
 import { useState } from "react";
 
-export default function PracticalExperience() {
+export default function PracticalExperience({
+  info,
+  handleCompany,
+  handlePosition,
+  handleFrom,
+  handleTo,
+  handleDesc,
+}) {
   const [state, setState] = useState("closed");
-  const [company, setCompany] = useState("");
-  const [position, setPosition] = useState("");
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
-  const [desc, setDesc] = useState("");
 
-  function changeCompany(e) {
-    setCompany(e.target.value);
-  }
-
-  function changePosition(e) {
-    setPosition(e.target.value);
-  }
-
-  function changeFrom(e) {
-    setFrom(e.target.value);
-  }
-
-  function changeTo(e) {
-    setTo(e.target.value);
-  }
+  const opened = state === "open";
 
   function open() {
     setState("open");
@@ -34,13 +23,6 @@ export default function PracticalExperience() {
   function close() {
     setState("closed");
   }
-
-  function changeDesc(e) {
-    setDesc(e.target.value);
-  }
-
-  const opened = state === "open";
-
   return (
     <div className="practical-experience-container">
       <h1 className="title">Experience</h1>
@@ -58,15 +40,15 @@ export default function PracticalExperience() {
               <input
                 type="text"
                 id="company-name"
-                value={company}
-                onInput={changeCompany}
+                value={info.company}
+                onInput={handleCompany}
               />
               <label htmlFor="position-title">Position title </label>
               <input
                 type="text"
                 id="position-title"
-                value={position}
-                onInput={changePosition}
+                value={info.position}
+                onInput={handlePosition}
               />
               <div className="job-duration-container">
                 <div className="date-container">
@@ -74,8 +56,8 @@ export default function PracticalExperience() {
                   <input
                     type="text"
                     id="from"
-                    value={from}
-                    onInput={changeFrom}
+                    value={info.start}
+                    onInput={handleFrom}
                     placeholder="e.g. 10/7/2016"
                   />
                 </div>
@@ -84,8 +66,8 @@ export default function PracticalExperience() {
                   <input
                     type="text"
                     id="to"
-                    value={to}
-                    onInput={changeTo}
+                    value={info.end}
+                    onInput={handleTo}
                     placeholder="e.g. 20/8/2020 / Present"
                   />
                 </div>
@@ -95,8 +77,8 @@ export default function PracticalExperience() {
                 id="main-responsibilities"
                 rows="5"
                 cols="2"
-                value={desc}
-                onInput={changeDesc}
+                value={info.desc}
+                onInput={handleDesc}
                 placeholder="e.g. Worked on the front end of Reddit's web page..."
               />
             </div>
