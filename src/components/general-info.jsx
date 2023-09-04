@@ -5,6 +5,26 @@ import { useState } from "react";
 
 export default function GeneralInfo() {
   const [state, setState] = useState("open");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [location, setLocation] = useState("");
+
+  function changeName(e) {
+    setName(e.target.value);
+  }
+
+  function changeEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function changePhone(e) {
+    setPhone(e.target.value);
+  }
+
+  function changeLocation(e) {
+    setLocation(e.target.value);
+  }
 
   function open() {
     setState("open");
@@ -29,13 +49,25 @@ export default function GeneralInfo() {
           />
           <form action="">
             <label htmlFor="name">Full name </label>
-            <input type="text" id="name" />
+            <input type="text" id="name" value={name} onInput={changeName} />
             <label htmlFor="email">Email </label>
-            <input type="email" id="email" />
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onInput={changeEmail}
+              placeholder="e.g. johndoe@cv.com"
+            />
             <label htmlFor="phone">Phone Number </label>
-            <input type="tel" id="phone" />
+            <input type="tel" id="phone" value={phone} onInput={changePhone} />
             <label htmlFor="location">Location </label>
-            <input type="text" id="location" />
+            <input
+              type="text"
+              id="location"
+              value={location}
+              onInput={changeLocation}
+              placeholder="e.g. London,UK"
+            />
           </form>
         </>
       ) : (

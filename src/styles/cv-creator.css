@@ -107,7 +107,8 @@ form,
   transform: scale(1.1) translate(-50%, 50%);
 }
 
-.job-duration-container {
+.job-duration-container,
+.study-duration-container {
   display: flex;
   justify-content: space-between;
   max-width: 400px;
@@ -136,4 +137,9 @@ textarea {
 textarea:focus {
   border: 1px solid #3500d3;
   background-color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 15px;
 }
