@@ -86,7 +86,7 @@ export default function PracticalExperience() {
                     id="to"
                     value={to}
                     onInput={changeTo}
-                    placeholder="e.g. 20/8/2020"
+                    placeholder="e.g. 20/8/2020 / Present"
                   />
                 </div>
               </div>
