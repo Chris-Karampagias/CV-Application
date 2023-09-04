@@ -8,24 +8,24 @@ import {
   mdiHammer,
 } from "@mdi/js";
 
-export default function CvPreview() {
+export default function CvPreview({ general, education, experience }) {
   return (
     <div className="cv-preview-container">
       <h1 className="cv-preview-name">CV Preview</h1>
       <div className="general-info-preview-container">
-        <h1 className="name-preview">John Doe</h1>
+        <h1 className="name-preview">{general.name}</h1>
         <div className="general-info-preview">
           <div className="info-container">
             <Icon path={mdiEmailBox} size={1} />
-            <h2 className="email">johndoe@cv.com</h2>
+            <h2 className="email">{general.email}</h2>
           </div>
           <div className="info-container">
             <Icon path={mdiPhone} size={1} />
-            <h2 className="phone">6960505043</h2>
+            <h2 className="phone">{general.phone}</h2>
           </div>
           <div className="info-container">
             <Icon path={mdiMapMarker} size={1} />
-            <h2 className="location">London, UK</h2>
+            <h2 className="location">{general.location}</h2>
           </div>
         </div>
       </div>
@@ -37,13 +37,13 @@ export default function CvPreview() {
           </div>
           <ul>
             <li>
-              <span className="dot">•</span> Harvard
+              <span className="dot">•</span> {education.school}
             </li>
             <li>
-              <span className="dot">•</span> Mathematics BSc.
+              <span className="dot">•</span> {education.study}
             </li>
             <li>
-              <span className="dot">•</span> 8/9/2016 - Present
+              <span className="dot">•</span> {education.start} - {education.end}
             </li>
           </ul>
         </div>
@@ -54,19 +54,17 @@ export default function CvPreview() {
           </div>
           <ul>
             <li>
-              <span className="dot">•</span> Intrasoft
+              <span className="dot">•</span> {experience.company}
             </li>
             <li>
-              <span className="dot">•</span> Senior Web Developer
+              <span className="dot">•</span> {experience.position}
             </li>
             <li>
-              <span className="dot">•</span> 10/7/2020 - Present
+              <span className="dot">•</span> {experience.start} -{" "}
+              {experience.end}
             </li>
             <li>
-              <span className="dot">•</span> Lorem ipsum dolor sit amet,
-              consectetur adipisicing elit. Nisi, quam nam illum cumque tenetur
-              eligendi molestias soluta hic quo aliquid odit, blanditiis fugit
-              itaque maxime tempora voluptas eaque in quae!
+              <span className="dot">•</span> {experience.desc}
             </li>
           </ul>
         </div>

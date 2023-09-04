@@ -27,6 +27,16 @@ export default function CV() {
     desc: "",
   });
 
+  const [status, setStatus] = useState("edit");
+
+  function isFilled(obj) {
+    const values = Object.values(obj);
+    if (values.includes("")) {
+      return false;
+    }
+    return true;
+  }
+
   function changeCompany(e) {
     setExperience({ ...experience, company: e.target.value });
   }
@@ -83,34 +93,130 @@ export default function CV() {
     <div className="cv-container">
       <div className="cv-creator-container">
         <h1 className="cv-creator-name">CV Creator</h1>
-        <GeneralInfo
-          info={generalInfo}
-          handleName={changeName}
-          handleEmail={changeEmail}
-          handlePhone={changePhone}
-          handleLocation={changeLocation}
-        />
-        <EducationalExperience
-          info={education}
-          handleSchool={changeSchool}
-          handleStudy={changeStudy}
-          handleFrom={changeFromEducation}
-          handleTo={changeToEducation}
-        />
-        <PracticalExperience
-          info={experience}
-          handleCompany={changeCompany}
-          handlePosition={changePosition}
-          handleFrom={changeFromExperience}
-          handleTo={changeToExperience}
-          handleDesc={changeDesc}
-        />
+        {status === "edit" ? (
+          <>
+            <GeneralInfo
+              info={generalInfo}
+              handleName={changeName}
+              handleEmail={changeEmail}
+              handlePhone={changePhone}
+              handleLocation={changeLocation}
+            />
+            <EducationalExperience
+              info={education}
+              handleSchool={changeSchool}
+              handleStudy={changeStudy}
+              handleFrom={changeFromEducation}
+              handleTo={changeToEducation}
+            />
+            <PracticalExperience
+              info={experience}
+              handleCompany={changeCompany}
+              handlePosition={changePosition}
+              handleFrom={changeFromExperience}
+              handleTo={changeToExperience}
+              handleDesc={changeDesc}
+            />
+          </>
+        ) : (
+          <>
+            <GeneralInfo
+              info={{
+                name: "",
+                email: "",
+                phone: "",
+                location: "",
+              }}
+              handleName={changeName}
+              handleEmail={changeEmail}
+              handlePhone={changePhone}
+              handleLocation={changeLocation}
+            />
+            <EducationalExperience
+              info={{
+                school: "",
+                study: "",
+                start: "",
+                end: "",
+              }}
+              handleSchool={changeSchool}
+              handleStudy={changeStudy}
+              handleFrom={changeFromEducation}
+              handleTo={changeToEducation}
+            />
+            <PracticalExperience
+              info={{
+                company: "",
+                position: "",
+                start: "",
+                end: "",
+                desc: "",
+              }}
+              handleCompany={changeCompany}
+              handlePosition={changePosition}
+              handleFrom={changeFromExperience}
+              handleTo={changeToExperience}
+              handleDesc={changeDesc}
+            />
+          </>
+        )}
         <div className="buttons-container">
-          <button type="submit">Submit</button>
-          <button type="button">Edit</button>
+          <button
+            type="submit"
+            onClick={() => {
+              if (
+                isFilled(generalInfo) &&
+                isFilled(education) &&
+                isFilled(experience)
+              )
+                setStatus("submit");
+            }}
+          >
+            Submit
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setStatus("edit");
+            }}
+          >
+            Edit
+          </button>
         </div>
       </div>
-      <CvPreview />
+      {status === "edit" ? (
+        <>
+          <CvPreview
+            general={{
+              name: "(name)",
+              email: "(email)",
+              phone: "(phone number)",
+              location: "(location)",
+            }}
+            education={{
+              school: "(school name)",
+              study: "(title of study)",
+              start: "(start date)",
+              end: "(end date)",
+            }}
+            experience={{
+              company: "(company name)",
+              position: "(position title)",
+              start: "(start date)",
+              end: "(end date)",
+              desc: "(description)",
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <CvPreview
+            general={generalInfo}
+            education={education}
+            experience={experience}
+          />
+        </>
+      )}
     </div>
   );
 }
