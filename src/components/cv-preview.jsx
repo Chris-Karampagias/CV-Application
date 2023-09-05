@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "../styles/cv-preview.css";
 import Icon from "@mdi/react";
 import {
@@ -16,15 +17,21 @@ export default function CvPreview({ general, education, experience }) {
         <h1 className="name-preview">{general.name}</h1>
         <div className="general-info-preview">
           <div className="info-container">
-            <Icon path={mdiEmailBox} size={1} />
+            <div className="icon-wrapper">
+              <Icon className="preview-icon" path={mdiEmailBox} size={1} />
+            </div>
             <h2 className="email">{general.email}</h2>
           </div>
           <div className="info-container">
-            <Icon path={mdiPhone} size={1} />
+            <div className="icon-wrapper">
+              <Icon className="preview-icon" path={mdiPhone} size={1} />
+            </div>
             <h2 className="phone">{general.phone}</h2>
           </div>
           <div className="info-container">
-            <Icon path={mdiMapMarker} size={1} />
+            <div className="icon-wrapper">
+              <Icon className="preview-icon" path={mdiMapMarker} size={1} />
+            </div>
             <h2 className="location">{general.location}</h2>
           </div>
         </div>
@@ -32,7 +39,9 @@ export default function CvPreview({ general, education, experience }) {
       <div className="education-work-container">
         <div className="education-preview-container">
           <div className="title-container">
-            <Icon className="preview-icon" path={mdiSchool} size={1.5} />
+            <div className="icon-wrapper">
+              <Icon className="preview-icon" path={mdiSchool} size={1.5} />
+            </div>
             <h2 className="title-preview">Education</h2>
           </div>
           <ul>
@@ -49,24 +58,32 @@ export default function CvPreview({ general, education, experience }) {
         </div>
         <div className="experience-preview-container">
           <div className="title-container">
-            <Icon className="preview-icon" path={mdiHammer} size={1.5} />
+            <div className="icon-wrapper">
+              <Icon className="preview-icon" path={mdiHammer} size={1.5} />
+            </div>
             <h2 className="title-preview">Experience</h2>
           </div>
-          <ul>
-            <li>
-              <span className="dot">•</span> {experience.company}
-            </li>
-            <li>
-              <span className="dot">•</span> {experience.position}
-            </li>
-            <li>
-              <span className="dot">•</span> {experience.start} -{" "}
-              {experience.end}
-            </li>
-            <li>
-              <span className="dot">•</span> {experience.desc}
-            </li>
-          </ul>
+          {experience.map((company) => {
+            return (
+              <div
+                className="company-preview-container"
+                key={company.companyName}
+              >
+                <h1 className="company-preview-name">{company.companyName}</h1>
+                <ul>
+                  <li>
+                    <span className="dot">•</span> {company.positionName}
+                  </li>
+                  <li>
+                    <span className="dot">•</span> {company.from} - {company.to}
+                  </li>
+                  <li>
+                    <span className="dot">•</span> {company.desc}
+                  </li>
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="cv-preview-footer"></div>
