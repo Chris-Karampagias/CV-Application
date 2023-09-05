@@ -5,6 +5,7 @@ import Icon from "@mdi/react";
 import { mdiArrowCollapseUp, mdiDelete } from "@mdi/js";
 
 function Company({
+  isSubmitted,
   info,
   handleCompany,
   handlePosition,
@@ -16,7 +17,11 @@ function Company({
 }) {
   return (
     <>
-      {info.status === "open" ? (
+      {isSubmitted ? (
+        <div className="company-closed-container">
+          <div className="company-name-closed">{info.companyName}</div>
+        </div>
+      ) : info.status === "open" ? (
         <div className="company">
           <Icon
             className="arrow"
@@ -116,6 +121,7 @@ function Company({
 
 export default function PracticalExperience({
   info,
+  isSubmitted,
   addObj,
   handleStatus,
   handleCompany,
@@ -148,6 +154,7 @@ export default function PracticalExperience({
             return (
               <Company
                 key={index}
+                isSubmitted={isSubmitted}
                 info={company}
                 handleStatus={handleStatus}
                 handleCompany={handleCompany}

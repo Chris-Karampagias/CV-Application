@@ -194,6 +194,7 @@ export default function CV() {
             />
             <PracticalExperience
               info={experience}
+              isSubmitted={false}
               handleCompany={changeCompany}
               handlePosition={changePosition}
               handleFrom={changeFromExperience}
@@ -232,6 +233,7 @@ export default function CV() {
             />
             <PracticalExperience
               info={experience}
+              isSubmitted={true}
               handleCompany={changeCompany}
               handlePosition={changePosition}
               handleFrom={changeFromExperience}
