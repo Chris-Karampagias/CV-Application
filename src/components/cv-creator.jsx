@@ -231,7 +231,7 @@ export default function CV() {
               handleTo={changeToEducation}
             />
             <PracticalExperience
-              info={null}
+              info={experience}
               handleCompany={changeCompany}
               handlePosition={changePosition}
               handleFrom={changeFromExperience}
@@ -280,13 +280,15 @@ export default function CV() {
               start: "(start date)",
               end: "(end date)",
             }}
-            experience={{
-              company: "(company name)",
-              position: "(position title)",
-              start: "(start date)",
-              end: "(end date)",
-              desc: "(description)",
-            }}
+            experience={[
+              {
+                companyName: "(company name)",
+                positionName: "(position title)",
+                from: "(start date)",
+                to: "(end date)",
+                desc: "(description)",
+              },
+            ]}
           />
         </>
       ) : (
