@@ -1,14 +1,23 @@
+.info-container .icon-wrapper {
+  height: 20px;
+  width: 20px;
+}
+
+.info-container h2 {
+  width: 100%;
+  word-wrap: break-word;
+}
+
 .cv-preview-container {
-  position: sticky;
-  top: 3rem;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   background-color: #ffffff;
   width: 70%;
   margin: 1rem;
+  margin-top: 50px;
   border-radius: 10px;
-  height: 700px;
+  height: fit-content;
 }
 
 .cv-preview-name {
@@ -21,11 +30,11 @@
 }
 
 .general-info-preview-container {
-  height: 20%;
+  min-height: 130px;
   background-color: #012b61e7;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  padding: 1rem;
+  padding: 10px;
   color: white;
   display: flex;
   place-items: center;
@@ -34,37 +43,41 @@
 
 .name-preview {
   width: 40%;
-  text-align: end;
   font-size: 60px;
 }
 
 .general-info-preview {
   display: flex;
   flex-direction: column;
-  place-items: center;
+  justify-content: center;
   gap: 20px;
-  width: 60%;
+  min-width: 200px;
   font-size: 30px;
 }
 
 .info-container {
   display: flex;
   place-items: center;
-  width: 50%;
+  width: 100%;
   gap: 10px;
 }
 
 .education-work-container {
   display: flex;
-  margin-top: 1rem;
+  flex-direction: column;
+  margin-top: 10px;
+  height: fit-content;
 }
 
 .title-container {
   display: flex;
-  place-items: center;
+  justify-content: start;
+  align-items: center;
   align-self: center;
+  margin-left: 10px;
   gap: 10px;
   font-size: 40px;
+  width: 100%;
 }
 
 .title-container .preview-icon {
@@ -76,15 +89,15 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 50%;
-}
-
-.education-preview-container {
-  border-right: 4px dashed #012b61e7;
 }
 
 .experience-preview-container {
-  padding-bottom: 2rem;
+  margin-top: 10px;
+}
+
+.education-preview-container {
+  padding-bottom: 1rem;
+  border-bottom: 4px dashed #012b61e7;
 }
 
 .education-work-container ul {
@@ -92,7 +105,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .dot {
@@ -104,5 +117,43 @@
   margin-top: 10px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  min-height: 50px;
+  justify-self: end;
+  height: 70px;
+}
+
+.company-preview-name {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.company-preview-container {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 1024px) {
+  .name-preview {
+    margin-top: 10px;
+    width: 100%;
+    white-space: nowrap;
+    font-size: 40px;
+  }
+
+  .general-info-preview {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 806px) {
+  .general-info-preview-container {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .general-info-preview {
+    width: fit-content;
+    justify-content: start;
+  }
 }
