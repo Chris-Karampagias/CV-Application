@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import "../styles/cv-creator.css";
 import Icon from "@mdi/react";
 import { mdiArrowCollapseUp, mdiDelete } from "@mdi/js";
