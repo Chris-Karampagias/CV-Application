@@ -24,6 +24,8 @@ function Company({
             onClick={() => {
               if (info.companyName !== "") {
                 handleStatus(info);
+              } else {
+                alert("Enter the company's name first before closing!");
               }
             }}
             size={1}
