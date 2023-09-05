@@ -1,37 +1,31 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import "../styles/cv-creator.css";
 import Icon from "@mdi/react";
-import { mdiArrowCollapseDown, mdiArrowCollapseUp } from "@mdi/js";
-import { useState } from "react";
+import { mdiArrowCollapseUp, mdiDelete } from "@mdi/js";
 
-export default function PracticalExperience({
+function Company({
   info,
   handleCompany,
   handlePosition,
   handleFrom,
   handleTo,
   handleDesc,
+  handleStatus,
+  handleRemove,
 }) {
-  const [state, setState] = useState("closed");
-
-  const opened = state === "open";
-
-  function open() {
-    setState("open");
-  }
-
-  function close() {
-    setState("closed");
-  }
   return (
-    <div className="practical-experience-container">
-      <h1 className="title">Experience</h1>
-      {opened ? (
-        <>
+    <>
+      {info.status === "open" ? (
+        <div className="company">
           <Icon
             className="arrow"
             path={mdiArrowCollapseUp}
-            onClick={close}
+            onClick={() => {
+              if (info.companyName !== "") {
+                handleStatus(info);
+              }
+            }}
             size={1}
           />
           <form action="">
@@ -40,15 +34,19 @@ export default function PracticalExperience({
               <input
                 type="text"
                 id="company-name"
-                value={info.company}
-                onInput={handleCompany}
+                value={info.companyName}
+                onInput={(e) => {
+                  handleCompany(info, e);
+                }}
               />
               <label htmlFor="position-title">Position title </label>
               <input
                 type="text"
                 id="position-title"
-                value={info.position}
-                onInput={handlePosition}
+                value={info.positionName}
+                onInput={(e) => {
+                  handlePosition(info, e);
+                }}
               />
               <div className="job-duration-container">
                 <div className="date-container">
@@ -56,8 +54,10 @@ export default function PracticalExperience({
                   <input
                     type="text"
                     id="from"
-                    value={info.start}
-                    onInput={handleFrom}
+                    value={info.from}
+                    onInput={(e) => {
+                      handleFrom(info, e);
+                    }}
                     placeholder="e.g. 10/7/2016"
                   />
                 </div>
@@ -66,8 +66,10 @@ export default function PracticalExperience({
                   <input
                     type="text"
                     id="to"
-                    value={info.end}
-                    onInput={handleTo}
+                    value={info.to}
+                    onInput={(e) => {
+                      handleTo(info, e);
+                    }}
                     placeholder="e.g. 20/8/2020 / Present"
                   />
                 </div>
@@ -78,20 +80,86 @@ export default function PracticalExperience({
                 rows="5"
                 cols="2"
                 value={info.desc}
-                onInput={handleDesc}
+                onInput={(e) => {
+                  handleDesc(info, e);
+                }}
                 placeholder="e.g. Worked on the front end of Reddit's web page..."
               />
             </div>
           </form>
-        </>
+        </div>
       ) : (
-        <>
+        <div className="company-closed-container">
+          <div
+            className="company-name-closed"
+            onClick={() => {
+              handleStatus(info);
+            }}
+          >
+            {info.companyName}
+          </div>
           <Icon
-            className="arrow"
-            path={mdiArrowCollapseDown}
-            onClick={open}
-            size={1}
+            className="remove-icon"
+            path={mdiDelete}
+            size={1.3}
+            onClick={() => {
+              handleRemove(info);
+            }}
           />
+        </div>
+      )}
+    </>
+  );
+}
+
+export default function PracticalExperience({
+  info,
+  addObj,
+  handleStatus,
+  handleCompany,
+  handlePosition,
+  handleFrom,
+  handleTo,
+  handleDesc,
+  handleRemove,
+}) {
+  /* function expIsFilled(exp) {
+    exp.forEach((company) => {
+      if (!isFilled(company)) {
+        return false;
+      }
+    });
+    return true;
+  } */
+
+  return (
+    <div className="practical-experience-container">
+      <h1 className="title">Experience</h1>
+      {info.length === 0 && (
+        <button className="add-company-button" onClick={addObj}>
+          +
+        </button>
+      )}
+      {info.length > 0 && (
+        <>
+          {info.map((company, index) => {
+            return (
+              <Company
+                key={index}
+                info={company}
+                handleStatus={handleStatus}
+                handleCompany={handleCompany}
+                handlePosition={handlePosition}
+                handleFrom={handleFrom}
+                handleTo={handleTo}
+                handleDesc={handleDesc}
+                handleRemove={handleRemove}
+              />
+            );
+          })}
+          <div className="add-company-button" onClick={addObj}>
+            +
+          </div>
         </>
       )}
     </div>

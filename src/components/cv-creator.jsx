@@ -19,15 +19,23 @@ export default function CV() {
     start: "",
     end: "",
   });
-  const [experience, setExperience] = useState({
-    company: "",
-    position: "",
-    start: "",
-    end: "",
-    desc: "",
-  });
+  const [experience, setExperience] = useState([]);
 
   const [status, setStatus] = useState("edit");
+
+  function addObj() {
+    setExperience([
+      ...experience,
+      {
+        companyName: "",
+        positionName: "",
+        from: "",
+        to: "",
+        desc: "",
+        status: "open",
+      },
+    ]);
+  }
 
   function isFilled(obj) {
     const values = Object.values(obj);
@@ -37,24 +45,99 @@ export default function CV() {
     return true;
   }
 
-  function changeCompany(e) {
-    setExperience({ ...experience, company: e.target.value });
+  function deleteJob(selectedCompany) {
+    const newExperience = [...experience];
+    newExperience.forEach((company) => {
+      let companyIndex = newExperience.indexOf(company);
+      if (companyIndex === newExperience.indexOf(selectedCompany)) {
+        newExperience.splice(companyIndex, 1);
+        setExperience(newExperience);
+      }
+    });
   }
 
-  function changePosition(e) {
-    setExperience({ ...experience, position: e.target.value });
+  function changeStatus(selectedCompany) {
+    const newExperience = [...experience];
+    newExperience.forEach((company) => {
+      let companyIndex = newExperience.indexOf(company);
+      if (companyIndex === newExperience.indexOf(selectedCompany)) {
+        newExperience[companyIndex] = {
+          ...selectedCompany,
+          status: selectedCompany.status === "closed" ? "open" : "closed",
+        };
+        setExperience(newExperience);
+      }
+    });
   }
 
-  function changeFromExperience(e) {
-    setExperience({ ...experience, start: e.target.value });
+  function changeCompany(selectedCompany, e) {
+    const newExperience = [...experience];
+    newExperience.forEach((company) => {
+      let companyIndex = newExperience.indexOf(company);
+      if (companyIndex === newExperience.indexOf(selectedCompany)) {
+        newExperience[companyIndex] = {
+          ...selectedCompany,
+          companyName: e.target.value,
+        };
+        setExperience(newExperience);
+      }
+    });
   }
 
-  function changeToExperience(e) {
-    setExperience({ ...experience, end: e.target.value });
+  function changePosition(selectedCompany, e) {
+    const newExperience = [...experience];
+    newExperience.forEach((company) => {
+      let companyIndex = newExperience.indexOf(company);
+      if (companyIndex === newExperience.indexOf(selectedCompany)) {
+        newExperience[companyIndex] = {
+          ...selectedCompany,
+          positionName: e.target.value,
+        };
+        setExperience(newExperience);
+      }
+    });
   }
 
-  function changeDesc(e) {
-    setExperience({ ...experience, desc: e.target.value });
+  function changeFromExperience(selectedCompany, e) {
+    const newExperience = [...experience];
+    newExperience.forEach((company) => {
+      let companyIndex = newExperience.indexOf(company);
+      if (companyIndex === newExperience.indexOf(selectedCompany)) {
+        newExperience[companyIndex] = {
+          ...selectedCompany,
+          from: e.target.value,
+        };
+        setExperience(newExperience);
+      }
+    });
+  }
+
+  function changeToExperience(selectedCompany, e) {
+    const newExperience = [...experience];
+    newExperience.forEach((company) => {
+      let companyIndex = newExperience.indexOf(company);
+      if (companyIndex === newExperience.indexOf(selectedCompany)) {
+        newExperience[companyIndex] = {
+          ...selectedCompany,
+          to: e.target.value,
+        };
+        setExperience(newExperience);
+      }
+    });
+  }
+
+  function changeDesc(selectedCompany, e) {
+    const newExperience = [...experience];
+    newExperience.forEach((company) => {
+      let companyIndex = newExperience.indexOf(company);
+      if (companyIndex === newExperience.indexOf(selectedCompany)) {
+        newExperience[companyIndex] = {
+          ...selectedCompany,
+          desc: e.target.value,
+        };
+        setExperience(newExperience);
+      }
+    });
   }
 
   function changeName(e) {
@@ -116,6 +199,9 @@ export default function CV() {
               handleFrom={changeFromExperience}
               handleTo={changeToExperience}
               handleDesc={changeDesc}
+              addObj={addObj}
+              handleStatus={changeStatus}
+              handleRemove={deleteJob}
             />
           </>
         ) : (
@@ -145,18 +231,13 @@ export default function CV() {
               handleTo={changeToEducation}
             />
             <PracticalExperience
-              info={{
-                company: "",
-                position: "",
-                start: "",
-                end: "",
-                desc: "",
-              }}
+              info={null}
               handleCompany={changeCompany}
               handlePosition={changePosition}
               handleFrom={changeFromExperience}
               handleTo={changeToExperience}
               handleDesc={changeDesc}
+              isFilled={isFilled}
             />
           </>
         )}
